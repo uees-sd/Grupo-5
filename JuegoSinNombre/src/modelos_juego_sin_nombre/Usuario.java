@@ -11,6 +11,7 @@ package modelos_juego_sin_nombre;
 public class Usuario {
     private String userName;
     private String Avatar;
+    private String ip;
     
     public Usuario() {}
 
@@ -34,4 +35,14 @@ public class Usuario {
     public void setAvatar(String Avatar) {
         this.Avatar = Avatar;
     }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    
 }
