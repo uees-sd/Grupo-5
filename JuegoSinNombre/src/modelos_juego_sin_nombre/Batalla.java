@@ -4,11 +4,13 @@
  */
 package modelos_juego_sin_nombre;
 
+import java.io.Serializable;
+
 /**
  *
  * @author aleja
  */
-public class Batalla {
+public class Batalla implements Serializable{
     private Usuario jugador1;
     private Usuario jugador2;
     private double vidaJugador1;
@@ -30,7 +32,7 @@ public class Batalla {
         this.duracion = duracion;
     }
 
-    
+
     public Usuario getJugador1() {
         return jugador1;
     }

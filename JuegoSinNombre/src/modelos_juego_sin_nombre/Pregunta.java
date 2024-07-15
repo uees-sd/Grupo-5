@@ -4,13 +4,14 @@
  */
 package modelos_juego_sin_nombre;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author aleja
  */
-public class Pregunta {
+public class Pregunta implements Serializable{
     private String pregunta;
     private String materia;
     private ArrayList<Respuesta> respuestasPosibles;

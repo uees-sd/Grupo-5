@@ -4,11 +4,13 @@
  */
 package modelos_juego_sin_nombre;
 
+import java.io.Serializable;
+
 /**
  *
  * @author aleja
  */
-public class Respuesta {
+public class Respuesta implements Serializable{
     private String respuesta;
     private boolean esCorrecta;
 

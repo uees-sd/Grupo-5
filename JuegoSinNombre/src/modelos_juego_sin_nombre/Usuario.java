@@ -4,20 +4,23 @@
  */
 package modelos_juego_sin_nombre;
 
+import java.io.Serializable;
+
 /**
  *
  * @author aleja
  */
-public class Usuario {
+public class Usuario implements Serializable{
     private String userName;
     private String Avatar;
     private String ip;
     
     public Usuario() {}
 
-    public Usuario(String userName, String Avatar) {
+    public Usuario(String userName, String Avatar, String ip) {
         this.userName = userName;
         this.Avatar = Avatar;
+        this.ip = ip;
     }
 
     public String getUserName() {

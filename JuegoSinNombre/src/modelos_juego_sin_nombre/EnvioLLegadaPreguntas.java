@@ -3,8 +3,9 @@
  */
 package modelos_juego_sin_nombre;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class EnvioLLegadaPreguntas {
+public class EnvioLLegadaPreguntas implements Serializable{
     private ArrayList<Pregunta> preguntas = new ArrayList<>();
 }
