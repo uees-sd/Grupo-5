@@ -5,9 +5,12 @@
 package InterfazGraficaProfesor;
 
 import admincenterprofesor.AdminCenterProfesor;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import models.Batalla;
 import models.Usuario;
@@ -29,6 +32,8 @@ public class AdminJuego extends javax.swing.JFrame {
     ArrayList<Usuario> jugadoresEnBatalla;
     String[] listaJugadoresDisponiblesArr = new String[20];
     String[] listaJugadoresArr = new String[20];
+    String[] listaJugadoresBatalla = new String[2];
+    String[] listaBatallas = new String[10];
     /**
      * Creates new form AdminJuego
      */
@@ -38,6 +43,7 @@ public class AdminJuego extends javax.swing.JFrame {
         jugadoresEnBatalla =  new ArrayList<>();
         jugadores = new ArrayList<>();
         jugadoresDisponibles =  new ArrayList<>();
+        
         initComponents();
         llenarListaGraficaJugadores();
     }
@@ -51,9 +57,6 @@ public class AdminJuego extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        txtJugador1 = new java.awt.TextField();
-        txtJugador2 = new java.awt.TextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnSeleccionarJugador = new java.awt.Button();
@@ -64,23 +67,27 @@ public class AdminJuego extends javax.swing.JFrame {
         gListTxtJugadoresDisp = new javax.swing.JList<>();
         btnActualizarJugadoresDisponibles = new java.awt.Button();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtAPreguntas = new javax.swing.JTextArea();
         btnCrearBatalla = new java.awt.Button();
-        jLabel5 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        gListTxtJugadoresDisp1 = new javax.swing.JList<>();
+        gListTxtJugadoresSelec = new javax.swing.JList<>();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        btnCargarPreguntas = new java.awt.Button();
+        btnCargarJugadores = new java.awt.Button();
+        btnIniciarBatallas = new java.awt.Button();
+        btnSiguienteRonda = new java.awt.Button();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        gListTxtBatallas = new javax.swing.JList<>();
+        jLabel8 = new javax.swing.JLabel();
+        jlabelCargaJugadoresConf = new javax.swing.JLabel();
+        jlabelCargaPreguntasConf = new javax.swing.JLabel();
+        btnPausarBatallas = new java.awt.Button();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        gListTxtBatallas1 = new javax.swing.JList<>();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Jugador 2");
-
-        txtJugador1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtJugador1ActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("JugadoresConectados");
@@ -111,9 +118,9 @@ public class AdminJuego extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        txtAPreguntas.setColumns(20);
+        txtAPreguntas.setRows(5);
+        jScrollPane3.setViewportView(txtAPreguntas);
 
         btnCrearBatalla.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCrearBatalla.setLabel("Crear Batalla");
@@ -123,13 +130,62 @@ public class AdminJuego extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setText("Jugador 1");
-
-        jScrollPane4.setViewportView(gListTxtJugadoresDisp1);
+        jScrollPane4.setViewportView(gListTxtJugadoresSelec);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel6.setText("Batallas");
+        jLabel6.setText("JugadoresSeleccionados");
+
+        jLabel7.setText("Formato para preguntas ejemplo (Cuantos planetas tiene el sistema solar? ;ciencias;4,8 (SI),7,10)");
+
+        btnCargarPreguntas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCargarPreguntas.setLabel("Cargar Preguntas");
+        btnCargarPreguntas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarPreguntasActionPerformed(evt);
+            }
+        });
+
+        btnCargarJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCargarJugadores.setLabel("CargarJugadores");
+        btnCargarJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarJugadoresActionPerformed(evt);
+            }
+        });
+
+        btnIniciarBatallas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnIniciarBatallas.setLabel("Iniciar Batallas");
+        btnIniciarBatallas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarBatallasActionPerformed(evt);
+            }
+        });
+
+        btnSiguienteRonda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSiguienteRonda.setLabel("Siguiente Ronda");
+        btnSiguienteRonda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteRondaActionPerformed(evt);
+            }
+        });
+
+        jScrollPane5.setViewportView(gListTxtBatallas);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel8.setText("Score");
+
+        btnPausarBatallas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnPausarBatallas.setLabel("Pausar Batallas");
+        btnPausarBatallas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPausarBatallasActionPerformed(evt);
+            }
+        });
+
+        jScrollPane7.setViewportView(gListTxtBatallas1);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel9.setText("Batallas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,44 +195,68 @@ public class AdminJuego extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(73, 73, 73)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
                                 .addComponent(btnActualizarJugadoresDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(97, 97, 97)
-                                .addComponent(btnSeleccionarJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnSeleccionarJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(161, 161, 161)
+                                .addComponent(btnCargarJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(jlabelCargaJugadoresConf))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(97, 97, 97)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(277, 277, 277))))
+                        .addComponent(jlabelCargaPreguntasConf)
+                        .addGap(215, 215, 215))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(10, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCrearBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPausarBatallas, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnCargarPreguntas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSiguienteRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnIniciarBatallas, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCrearBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(656, 656, 656)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(228, 228, 228)
+                    .addComponent(jLabel9)
+                    .addContainerGap(1174, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,45 +267,60 @@ public class AdminJuego extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(2, 2, 2)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnActualizarJugadoresDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5))
-                        .addContainerGap(281, Short.MAX_VALUE))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSeleccionarJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCargarJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnActualizarJugadoresDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlabelCargaJugadoresConf)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jlabelCargaPreguntasConf))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSeleccionarJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCrearBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))))
+                        .addComponent(jLabel3)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnCargarPreguntas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCrearBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIniciarBatallas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSiguienteRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPausarBatallas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(648, Short.MAX_VALUE)
+                    .addComponent(jLabel9)
+                    .addGap(76, 76, 76)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtJugador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtJugador1ActionPerformed
-        
-    }//GEN-LAST:event_txtJugador1ActionPerformed
-
+    
     private void btnSeleccionarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarJugadorActionPerformed
         try
         {
+            gListTxtJugadoresSelec.setListData(listaJugadoresBatalla);
             int indexJugador = gListTxtJugadoresDisp.getSelectedIndex();
             String nombre = jugadores.get(indexJugador).getUserName();
-            if(txtJugador1.getText().equals("") && jugadoresDisponibles.stream().anyMatch(c -> c.getUserName().equals(nombre))){
+            if(listaJugadoresBatalla[0] == null && jugadoresDisponibles.stream().anyMatch(c -> c.getUserName().equals(nombre))){
                 jugador1 = new Usuario();
                 jugador1.setUserName(jugadores.get(indexJugador).getUserName());
                 jugador1.setIp(jugadores.get(indexJugador).getIp());
@@ -233,9 +328,11 @@ public class AdminJuego extends javax.swing.JFrame {
                 jugadoresDisponibles.removeIf(c -> c.getIp()== jugador1.getIp());
                 listaJugadoresDisponiblesArr[indexJugador] = null;
                 jugadoresEnBatalla.add(jugador1);
-                txtJugador1.setText(jugador1.getUserName());
+                
+                listaJugadoresBatalla[0] = jugador1.getUserName();
+                //txtJugador1.setText(jugador1.getUserName());
             }  
-            else if(txtJugador2.getText().equals("") && jugadoresDisponibles.stream().anyMatch(c -> c.getUserName().equals(nombre))){
+            else if(listaJugadoresBatalla[1] == null && jugadoresDisponibles.stream().anyMatch(c -> c.getUserName().equals(nombre))){
                 jugador2 = new Usuario();
                 jugador2.setUserName(jugadores.get(indexJugador).getUserName());
                 jugador2.setIp(jugadores.get(indexJugador).getIp());
@@ -243,7 +340,8 @@ public class AdminJuego extends javax.swing.JFrame {
                 jugadoresDisponibles.removeIf(c -> c.getIp()== jugador2.getIp());
                 listaJugadoresDisponiblesArr[indexJugador] = null;
                 jugadoresEnBatalla.add(jugador2);
-                txtJugador2.setText(jugador2.getUserName());
+                listaJugadoresBatalla[1] = jugador2.getUserName();
+                //txtJugador2.setText(jugador2.getUserName());
             }  
         }catch(Exception e)
         {
@@ -264,8 +362,64 @@ public class AdminJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarJugadoresDisponiblesActionPerformed
 
     private void btnCrearBatallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearBatallaActionPerformed
-        // TODO add your handling code here:
+        String batallastr = admProfesor.crearBatalla();
+        char posicion = batallastr.charAt(0);
+        listaBatallas[Character.getNumericValue(posicion) - 1] = batallastr;
+        gListTxtBatallas.setListData(listaBatallas);
     }//GEN-LAST:event_btnCrearBatallaActionPerformed
+
+    private void btnCargarPreguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarPreguntasActionPerformed
+        String contenido = txtAPreguntas.getText();
+        String[] lineas = contenido.split("\n");
+        
+        for(String linea : lineas){
+            boolean resp = admProfesor.cargarPreguntas(linea);
+        }
+         mostrarCheck("CargaPreguntas");
+    }//GEN-LAST:event_btnCargarPreguntasActionPerformed
+
+    private void btnCargarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarJugadoresActionPerformed
+        int contador = 0;
+        for(Usuario jugador : jugadoresEnBatalla){
+            admProfesor.cargarJugador(jugador, contador);
+            contador++;
+        }
+        mostrarCheck("CargaJugadores");
+        
+    }//GEN-LAST:event_btnCargarJugadoresActionPerformed
+
+    private void mostrarCheck(String seccion){
+        String imagePath = "src\\main\\java\\resources\\visto.png";
+        ImageIcon imageIcon = new ImageIcon(imagePath);
+        Image imagen = imageIcon.getImage();
+        Image imagenRedimensionada = imagen.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        ImageIcon imageIconRedimensionado = new ImageIcon(imagenRedimensionada);
+        switch (seccion) {
+            case "CargaJugadores":
+                jlabelCargaJugadoresConf.setSize(50,50);
+                jlabelCargaJugadoresConf.setIcon(imageIconRedimensionado);
+                break;
+            case "CargaPreguntas":
+                jlabelCargaPreguntasConf.setSize(50,50);
+                jlabelCargaPreguntasConf.setIcon(imageIconRedimensionado);
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
+    
+    
+    private void btnIniciarBatallasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarBatallasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIniciarBatallasActionPerformed
+
+    private void btnSiguienteRondaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteRondaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSiguienteRondaActionPerformed
+
+    private void btnPausarBatallasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPausarBatallasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPausarBatallasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -353,23 +507,33 @@ public class AdminJuego extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button btnActualizarJugadoresDisponibles;
+    private java.awt.Button btnCargarJugadores;
+    private java.awt.Button btnCargarPreguntas;
     private java.awt.Button btnCrearBatalla;
+    private java.awt.Button btnIniciarBatallas;
+    private java.awt.Button btnPausarBatallas;
     private java.awt.Button btnSeleccionarJugador;
+    private java.awt.Button btnSiguienteRonda;
+    private javax.swing.JList<String> gListTxtBatallas;
+    private javax.swing.JList<String> gListTxtBatallas1;
     private javax.swing.JList<String> gListTxtJugadores;
     private javax.swing.JList<String> gListTxtJugadoresDisp;
-    private javax.swing.JList<String> gListTxtJugadoresDisp1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JList<String> gListTxtJugadoresSelec;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
-    private java.awt.TextField txtJugador1;
-    private java.awt.TextField txtJugador2;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JLabel jlabelCargaJugadoresConf;
+    private javax.swing.JLabel jlabelCargaPreguntasConf;
+    private javax.swing.JTextArea txtAPreguntas;
     // End of variables declaration//GEN-END:variables
 }

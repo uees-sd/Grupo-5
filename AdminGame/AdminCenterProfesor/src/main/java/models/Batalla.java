@@ -19,7 +19,7 @@ public class Batalla implements Serializable{
     private Usuario Perdedor;
     private double duracion;
 
-    
+    public Batalla(){};
 
     public Batalla(Usuario jugador1, Usuario jugador2, double vidaJugador1, double vidaJugador2, Usuario ganador,
             Usuario perdedor, double duracion) {
