@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import modelos_juego_sin_nombre.Batalla;
-import modelos_juego_sin_nombre.Usuario;
+import models.Batalla;
+import models.Usuario;
 
 /**
  *

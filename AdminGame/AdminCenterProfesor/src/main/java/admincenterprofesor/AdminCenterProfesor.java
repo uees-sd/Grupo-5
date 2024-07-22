@@ -5,7 +5,7 @@
 package admincenterprofesor;
 
 import java.util.ArrayList;
-import modelos_juego_sin_nombre.Usuario;
+import models.Usuario;
 import rastreoClientes.UDPBroadcastServer;
 
 /**

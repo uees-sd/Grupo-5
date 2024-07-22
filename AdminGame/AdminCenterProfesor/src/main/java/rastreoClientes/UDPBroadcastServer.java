@@ -7,7 +7,7 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
-import modelos_juego_sin_nombre.Usuario;
+import models.Usuario;
 
 /**
  *
