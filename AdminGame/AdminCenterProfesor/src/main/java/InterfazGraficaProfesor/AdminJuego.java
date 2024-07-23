@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import models.Batalla;
 import models.Usuario;
@@ -22,7 +21,7 @@ import models.Usuario;
 public class AdminJuego extends javax.swing.JFrame {
 
     //variables
-    private boolean prueba = true;
+    private boolean prueba = false;
     private AdminCenterProfesor admProfesor;
     private ArrayList<Batalla> batallas;
     private Usuario jugador1;
@@ -37,7 +36,7 @@ public class AdminJuego extends javax.swing.JFrame {
     /**
      * Creates new form AdminJuego
      */
-    public AdminJuego() {
+    public AdminJuego() throws ClassNotFoundException {
         admProfesor = new AdminCenterProfesor();
         batallas = new ArrayList<>();
         jugadoresEnBatalla =  new ArrayList<>();
@@ -358,7 +357,11 @@ public class AdminJuego extends javax.swing.JFrame {
         gListTxtJugadoresDisp.removeAll();
         jugadores = new ArrayList<>();
         jugadoresDisponibles =  new ArrayList<>();
-        llenarListaGraficaJugadores();
+        try {
+            llenarListaGraficaJugadores();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnActualizarJugadoresDisponiblesActionPerformed
 
     private void btnCrearBatallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearBatallaActionPerformed
@@ -408,55 +411,7 @@ public class AdminJuego extends javax.swing.JFrame {
         }
     }
     
-    
-    private void btnIniciarBatallasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarBatallasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIniciarBatallasActionPerformed
-
-    private void btnSiguienteRondaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteRondaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSiguienteRondaActionPerformed
-
-    private void btnPausarBatallasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPausarBatallasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPausarBatallasActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdminJuego().setVisible(true);
-            }
-        });
-    }
-    
-    private void llenarListaGraficaJugadores()
+    private void llenarListaGraficaJugadores() throws ClassNotFoundException
     {
         
         
@@ -502,6 +457,60 @@ public class AdminJuego extends javax.swing.JFrame {
         }
 
     }
+    
+    
+    private void btnIniciarBatallasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarBatallasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIniciarBatallasActionPerformed
+
+    private void btnSiguienteRondaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteRondaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSiguienteRondaActionPerformed
+
+    private void btnPausarBatallasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPausarBatallasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPausarBatallasActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(AdminJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AdminJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AdminJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AdminJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new AdminJuego().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(AdminJuego.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+    }
+    
+    
     
     
 

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package rastreoClientes;
+import admincenterprofesor.Serializer;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
@@ -15,13 +16,14 @@ import models.Usuario;
  */
 public class UDPBroadcastServer {
     
-    public ArrayList<Usuario> getJugadoresClientes()
+    public ArrayList<Usuario> getJugadoresClientes() throws ClassNotFoundException
     {
         ArrayList<Usuario> usuarios = new ArrayList<>(); //jugadores usuarios conectados
         
         List<String> connectedIPs = new ArrayList<>(); // ip de jugadores conectados
         
         int port = 2020; // Puerto del servidor
+        int port2 = 2030; // Puerto del servidor envia
         String message = "Hola desde el servidor!";
         // Enviar señal de broadcast
         try (DatagramSocket socket = new DatagramSocket()) {
@@ -29,7 +31,8 @@ public class UDPBroadcastServer {
             Deteccion detect = new Deteccion();
             //connectedIPs =  detect.IPs();
             String prefix = detect.prefix();
-            for (int i = 1; i < 255; i++) {
+            //String prefix = "192.168.100.";
+            for (int i = 0; i < 255; i++) {
                 String host = prefix + i;
                 //String host = connectedIPs.get(i);
                 socket.setBroadcast(true);
@@ -43,10 +46,12 @@ public class UDPBroadcastServer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        
+        
+        
         // Configurar el servidor UDP para recibir mensajes de los clientes
-        try (DatagramSocket serverSocket = new DatagramSocket(port)) {
-            serverSocket.setSoTimeout(2000);
+        try (DatagramSocket serverSocket = new DatagramSocket(port2)) {
+            serverSocket.setSoTimeout(7000);
             
             byte[] receiveBuffer = new byte[1024];
             DatagramPacket receivePacket = new DatagramPacket(receiveBuffer, receiveBuffer.length);
@@ -57,12 +62,14 @@ public class UDPBroadcastServer {
                     System.out.println("Esperando mensajes de clientes...");
                     serverSocket.receive(receivePacket);
 
-                    String receivedMessage = new String(receivePacket.getData(), 0, receivePacket.getLength());
-                    System.out.println("Mensaje recibido de " + receivePacket.getAddress().getHostAddress() + ": " + receivedMessage);
+                    //String receivedMessage = new String(receivePacket.getData(), 0, receivePacket.getLength());
+                    Usuario usuario = (Usuario)Serializer.deserializeObject(receivePacket.getData());
+                    System.out.println("Mensaje recibido de " + receivePacket.getAddress().getHostAddress() + ": " + usuario.getUserName());
                     connectedIPs.add(receivePacket.getAddress().getHostAddress());
+                    usuarios.add(usuario);
                 }catch(SocketTimeoutException e)
                 {
-                    System.out.println("No se recibió ningún mensaje en los últimos 2 segundos. Saliendo del bucle.");
+                    System.out.println("No se recibió ningún mensaje en los últimos 7 segundos. Saliendo del bucle.");
                     break;
                 }
                 

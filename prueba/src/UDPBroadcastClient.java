@@ -1,13 +1,18 @@
 import java.io.*;
 import java.net.*;
 
+import models.*;
+
 public class UDPBroadcastClient {
-    public static void main(String[] args) {
-        int port = 12345; // Puerto de escucha
+    public static void main(String[] args) throws InterruptedException {
+        int port = 2020; // Puerto de escucha
+        int port2 = 2030; // Puerto de envio
 
         try {
             // Crear socket UDP para recibir la señal de broadcast
             DatagramSocket socket = new DatagramSocket(port, InetAddress.getByName("0.0.0.0"));
+            //DatagramSocket socket = new DatagramSocket(port, InetAddress.getByName("localhost"));
+            //String ip = InetAddress.getByName("0.0.0.0").toString();
             socket.setBroadcast(true);
 
             System.out.println("Esperando señal de broadcast...");
@@ -18,10 +23,20 @@ public class UDPBroadcastClient {
             String message = new String(packet.getData(), 0, packet.getLength());
             System.out.println("Señal de broadcast recibida desde: " + packet.getAddress().getHostAddress() + " con mensaje: " + message);
 
-            // Enviar respuesta al servidor
-            String responseMessage = "Hola servidor, soy el cliente!";
-            byte[] responseBuffer = responseMessage.getBytes();
-            DatagramPacket responsePacket = new DatagramPacket(responseBuffer, responseBuffer.length, packet.getAddress(), port);
+            Usuario usuario = new Usuario();
+            usuario.setUserName("Alejandro");
+            usuario.setIp("");
+            byte[] responseBuffer = Serializer.serializeObject(usuario);
+            
+            //Enviar respuesta al servidor
+            // String responseMessage = "Hola servidor, soy el cliente!";
+            // byte[] responseBuffer = responseMessage.getBytes();
+           
+           
+
+            DatagramPacket responsePacket = new DatagramPacket(responseBuffer, responseBuffer.length, packet.getAddress(), port2);
+
+            Thread.sleep(3000);
             socket.send(responsePacket);
             System.out.println("Mensaje de respuesta enviado al servidor.");
 

@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-import modelos_juego_sin_nombre.Usuario;
+import models.Usuario;
 
 public class PruebaApp {
     public static void main(String[] args) throws ClassNotFoundException {

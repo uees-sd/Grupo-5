@@ -25,7 +25,7 @@ public class AdminCenterProfesor {
     
     
     
-    public ArrayList<Usuario> getJugadoresConectados()
+    public ArrayList<Usuario> getJugadoresConectados() throws ClassNotFoundException
     {   
         return conexionUsuarios.getJugadoresClientes();
     }

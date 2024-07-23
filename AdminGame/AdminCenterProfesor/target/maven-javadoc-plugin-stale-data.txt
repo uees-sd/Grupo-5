@@ -26,25 +26,25 @@ admincenterprofesor
 InterfazGraficaProfesor
 models
 rastreoClientes
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\src\main\java = 1721612276702
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\generated-sources\annotations = 1721616949896
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\allclasses-index.html = 1721616953027
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\allpackages-index.html = 1721616953029
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\copy.svg = 1721616953054
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\element-list = 1721616952888
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\help-doc.html = 1721616953051
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\index-all.html = 1721616953043
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\index.html = 1721616953015
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\member-search-index.js = 1721616953032
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\module-search-index.js = 1721616953030
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\overview-summary.html = 1721616953047
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\overview-tree.html = 1721616953012
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\package-search-index.js = 1721616953031
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\script.js = 1721616953053
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\search-page.js = 1721616953057
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\search.html = 1721616953046
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\search.js = 1721616953056
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\serialized-form.html = 1721616952954
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\stylesheet.css = 1721616953052
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\tag-search-index.js = 1721616953033
-E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\type-search-index.js = 1721616953031
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\src\main\java = 1721622488968
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\generated-sources\annotations = 1721699568203
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\allclasses-index.html = 1721699571445
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\allpackages-index.html = 1721699571449
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\copy.svg = 1721699571478
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\element-list = 1721699571300
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\help-doc.html = 1721699571474
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\index-all.html = 1721699571466
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\index.html = 1721699571434
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\member-search-index.js = 1721699571453
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\module-search-index.js = 1721699571449
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\overview-summary.html = 1721699571471
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\overview-tree.html = 1721699571430
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\package-search-index.js = 1721699571451
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\script.js = 1721699571477
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\search-page.js = 1721699571481
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\search.html = 1721699571469
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\search.js = 1721699571480
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\serialized-form.html = 1721699571372
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\stylesheet.css = 1721699571476
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\tag-search-index.js = 1721699571454
+E:\Sistemas distribuidos\Juego de preguntas\AdminGame\AdminCenterProfesor\target\apidocs\type-search-index.js = 1721699571452

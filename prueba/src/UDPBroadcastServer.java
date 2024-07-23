@@ -3,7 +3,7 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelos_juego_sin_nombre.Usuario;
+import models.Usuario;
 
 
 
@@ -12,7 +12,7 @@ import modelos_juego_sin_nombre.Usuario;
 public class UDPBroadcastServer {
     public ArrayList<Usuario> usuarios = new ArrayList<>();
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         List<String> connectedIPs = new ArrayList<>();
         int port = 2020; // Puerto del servidor
         String message = "Hola desde el servidor!";
@@ -23,6 +23,7 @@ public class UDPBroadcastServer {
             Deteccion detect = new Deteccion();
             //connectedIPs =  detect.IPs();
             String prefix = detect.prefix();
+            //String prefix = "192.168.100.";
             for (int i = 1; i < 255; i++) {
                 String host = prefix + i;
                 //String host = connectedIPs.get(i);
@@ -34,17 +35,14 @@ public class UDPBroadcastServer {
                 socket.send(packet);
                 System.out.println("Señal de broadcast enviada");
             }
-            
-
-
-            
-
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        Thread.sleep(1000);
+
         // Configurar el servidor UDP para recibir mensajes de los clientes
-        try (DatagramSocket serverSocket = new DatagramSocket(port)) {
+        try (DatagramSocket serverSocket = new DatagramSocket(2030)) {
             byte[] receiveBuffer = new byte[1024];
             DatagramPacket receivePacket = new DatagramPacket(receiveBuffer, receiveBuffer.length);
 
