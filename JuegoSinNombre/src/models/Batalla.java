@@ -11,6 +11,7 @@ import java.io.Serializable;
  * @author aleja
  */
 public class Batalla implements Serializable{
+    private int NumBatalla;
     private Usuario jugador1;
     private Usuario jugador2;
     private double vidaJugador1;
@@ -21,8 +22,9 @@ public class Batalla implements Serializable{
 
     
 
-    public Batalla(Usuario jugador1, Usuario jugador2, double vidaJugador1, double vidaJugador2, Usuario ganador,
+    public Batalla(int NumBatalla,Usuario jugador1, Usuario jugador2, double vidaJugador1, double vidaJugador2, Usuario ganador,
             Usuario perdedor, double duracion) {
+        this.NumBatalla = NumBatalla;
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         this.vidaJugador1 = vidaJugador1;
@@ -74,6 +76,16 @@ public class Batalla implements Serializable{
     }
     public void setDuracion(double duracion) {
         this.duracion = duracion;
+    }
+
+
+    public int getNumBatalla() {
+        return NumBatalla;
+    }
+
+
+    public void setNumBatalla(int numBatalla) {
+        NumBatalla = numBatalla;
     }
 
    

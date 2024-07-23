@@ -7,10 +7,12 @@ package InterfazGraficaProfesor;
 import admincenterprofesor.AdminCenterProfesor;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import models.Batalla;
 import models.Usuario;
 
@@ -56,6 +58,8 @@ public class AdminJuego extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnSeleccionarJugador = new java.awt.Button();
@@ -85,6 +89,9 @@ public class AdminJuego extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         gListTxtBatallas1 = new javax.swing.JList<>();
         jLabel9 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        gListTxtRondas = new javax.swing.JList<>();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -171,7 +178,7 @@ public class AdminJuego extends javax.swing.JFrame {
         jScrollPane5.setViewportView(gListTxtBatallas);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel8.setText("Score");
+        jLabel8.setText("Podio");
 
         btnPausarBatallas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPausarBatallas.setLabel("Pausar Batallas");
@@ -185,6 +192,11 @@ public class AdminJuego extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel9.setText("Batallas");
+
+        jScrollPane8.setViewportView(gListTxtRondas);
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel10.setText("Rondas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -230,7 +242,9 @@ public class AdminJuego extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(10, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -250,6 +264,8 @@ public class AdminJuego extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(656, 656, 656)
                 .addComponent(jLabel8)
+                .addGap(211, 211, 211)
+                .addComponent(jLabel10)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -293,9 +309,12 @@ public class AdminJuego extends javax.swing.JFrame {
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCrearBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -441,19 +460,36 @@ public class AdminJuego extends javax.swing.JFrame {
                     }
                 }
             }
-        }
-        else
-        {
-            jugadores = admProfesor.getJugadoresConectados();
-            jugadoresDisponibles.addAll(jugadores);
-            for(Usuario usuario : jugadores)
-            {
-                listaJugadoresArr[contador] = usuario.getUserName();
-                listaJugadoresDisponiblesArr[contador] = usuario.getUserName();
-                contador++;
-            }
+        } else {
+            CompletableFuture.supplyAsync(() -> {
+                try {
+                    jugadores = admProfesor.getJugadoresConectados();
+                    jugadoresDisponibles.addAll(jugadores);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(AdminJuego.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                return jugadores;
+            }).thenRun(() -> {
+                // Actualizar la interfaz gráfica en el hilo de eventos de Swing
+                SwingUtilities.invokeLater(() -> {
+                    int index = 0;
+                    for (Usuario usuario : jugadores) {
+                        if (index < listaJugadoresArr.length) {
+                            listaJugadoresArr[index] = usuario.getUserName();
+                            listaJugadoresDisponiblesArr[index] = usuario.getUserName();
+                            index++;
+                        }
+                    }
+                    for (int i = index; i < listaJugadoresArr.length; i++) {
+                        listaJugadoresArr[i] = null;
+                        listaJugadoresDisponiblesArr[i] = null;
+                    }
+                    gListTxtJugadores.setListData(listaJugadoresArr);
+                    gListTxtJugadoresDisp.setListData(listaJugadoresDisponiblesArr);
+                });
+            });
         
-        
+
         }
 
     }
@@ -528,6 +564,8 @@ public class AdminJuego extends javax.swing.JFrame {
     private javax.swing.JList<String> gListTxtJugadores;
     private javax.swing.JList<String> gListTxtJugadoresDisp;
     private javax.swing.JList<String> gListTxtJugadoresSelec;
+    private javax.swing.JList<String> gListTxtRondas;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -535,12 +573,15 @@ public class AdminJuego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JLabel jlabelCargaJugadoresConf;
     private javax.swing.JLabel jlabelCargaPreguntasConf;
     private javax.swing.JTextArea txtAPreguntas;

@@ -10,6 +10,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
+import java.util.Optional;
 import models.Batalla;
 import models.Pregunta;
 import models.Respuesta;
@@ -24,6 +25,7 @@ import rastreoClientes.UDPBroadcastServer;
 public class AdminCenterProfesor {
 
     static int port = 2020; // Puerto del servidor ENVIA
+    static int port2 = 2030; // Puerto del servidor RECIBE
     UDPBroadcastServer conexionUsuarios = new UDPBroadcastServer();
     private ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
     private ArrayList<String> preguntasCrudas = new ArrayList<String>();
@@ -119,5 +121,42 @@ public class AdminCenterProfesor {
             return false;
         }
         return true;
+    }
+    
+    public ArrayList<Batalla> obtenerBatallasActualizadas(){
+        return this.batallas;
+    }
+    
+    public void RecibirBatallas() throws ClassNotFoundException{
+        try (DatagramSocket serverSocket = new DatagramSocket(port2)) {
+            
+            byte[] receiveBuffer = new byte[1024];
+            DatagramPacket receivePacket = new DatagramPacket(receiveBuffer, receiveBuffer.length);
+
+            while (true) {  
+                try
+                {
+                    System.out.println("Esperando Batllas clientes...");
+                    serverSocket.receive(receivePacket);
+                    Batalla batalla = (Batalla) Serializer.deserializeObject(receivePacket.getData());
+
+                    Optional<Batalla> batallaLst = batallas.stream()
+                            .filter(c -> c.getNumBatalla() == batalla.getNumBatalla())
+                            .findFirst();
+
+                    if (batallaLst.isPresent()) {
+                        int index = batallas.indexOf(batallaLst.get());
+                        batallas.set(index, batalla);
+                    } else {
+                        System.out.println("No se relaciono la batalla.");
+                    }
+                } catch (SocketTimeoutException e) {
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
