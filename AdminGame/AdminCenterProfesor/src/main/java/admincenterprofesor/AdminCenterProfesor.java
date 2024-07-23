@@ -4,11 +4,17 @@
 
 package admincenterprofesor;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import models.Batalla;
 import models.Pregunta;
 import models.Respuesta;
 import models.Usuario;
+import rastreoClientes.Deteccion;
 import rastreoClientes.UDPBroadcastServer;
 
 /**
@@ -17,6 +23,7 @@ import rastreoClientes.UDPBroadcastServer;
  */
 public class AdminCenterProfesor {
 
+    static int port = 2020; // Puerto del servidor ENVIA
     UDPBroadcastServer conexionUsuarios = new UDPBroadcastServer();
     private ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
     private ArrayList<String> preguntasCrudas = new ArrayList<String>();
@@ -89,5 +96,28 @@ public class AdminCenterProfesor {
         return batallastr;
     }
     
-    
+    public boolean enviarBatallas(){
+        try (DatagramSocket socket = new DatagramSocket()) {
+            InetAddress broadcastAddress;
+            DatagramPacket packet;
+            for(Batalla batalla : batallas){
+                socket.setBroadcast(true);
+                byte[] buffer = Serializer.serializeObject(batalla);
+                // Jugador 1
+                broadcastAddress = InetAddress.getByName(batalla.getJugador1().getIp());
+                packet = new DatagramPacket(buffer, buffer.length, broadcastAddress, port);
+                socket.send(packet);
+                System.out.println("Señal de broadcast enviada");
+                // Jugador 2
+                broadcastAddress = InetAddress.getByName(batalla.getJugador2().getIp());
+                packet = new DatagramPacket(buffer, buffer.length, broadcastAddress, port);
+                socket.send(packet);
+                System.out.println("Señal de broadcast enviada");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }

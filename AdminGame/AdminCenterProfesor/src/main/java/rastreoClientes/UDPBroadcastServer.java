@@ -22,8 +22,8 @@ public class UDPBroadcastServer {
         
         List<String> connectedIPs = new ArrayList<>(); // ip de jugadores conectados
         
-        int port = 2020; // Puerto del servidor
-        int port2 = 2030; // Puerto del servidor envia
+        int port = 2020; // Puerto del servidor ENVIA
+        int port2 = 2030; // Puerto del servidor RECIBE
         String message = "Hola desde el servidor!";
         // Enviar señal de broadcast
         try (DatagramSocket socket = new DatagramSocket()) {
@@ -65,15 +65,15 @@ public class UDPBroadcastServer {
                     //String receivedMessage = new String(receivePacket.getData(), 0, receivePacket.getLength());
                     Usuario usuario = (Usuario)Serializer.deserializeObject(receivePacket.getData());
                     System.out.println("Mensaje recibido de " + receivePacket.getAddress().getHostAddress() + ": " + usuario.getUserName());
-                    connectedIPs.add(receivePacket.getAddress().getHostAddress());
+                    String reciverAddress = receivePacket.getAddress().getHostAddress();
+                    connectedIPs.add(reciverAddress);
+                    usuario.setIp((usuario.getIp() == null) ? reciverAddress : usuario.getIp());
                     usuarios.add(usuario);
                 }catch(SocketTimeoutException e)
                 {
                     System.out.println("No se recibió ningún mensaje en los últimos 7 segundos. Saliendo del bucle.");
                     break;
                 }
-                
-                
             }
         } catch (IOException e) {
             e.printStackTrace();
