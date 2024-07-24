@@ -30,8 +30,21 @@ public class UDPBroadcastServer {
             //List<String> connectedIPs = new ArrayList<>();
             Deteccion detect = new Deteccion();
             //connectedIPs =  detect.IPs();
-            String prefix = detect.prefix();
-            //String prefix = "192.168.100.";
+            //String prefix = detect.prefix();
+            String prefix = "10.2.105.";
+            for (int i = 0; i < 255; i++) {
+                String host = prefix + i;
+                //String host = connectedIPs.get(i);
+                socket.setBroadcast(true);
+                byte[] buffer = message.getBytes();
+                InetAddress broadcastAddress = InetAddress.getByName(host); // Dirección de broadcast
+                //System.out.println(connectedIPs);
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length, broadcastAddress, port);
+                socket.send(packet);
+                System.out.println("Señal de broadcast enviada");
+            }
+            
+            prefix = "10.2.108.";
             for (int i = 0; i < 255; i++) {
                 String host = prefix + i;
                 //String host = connectedIPs.get(i);
@@ -51,7 +64,7 @@ public class UDPBroadcastServer {
         
         // Configurar el servidor UDP para recibir mensajes de los clientes
         try (DatagramSocket serverSocket = new DatagramSocket(port2)) {
-            serverSocket.setSoTimeout(7000);
+            serverSocket.setSoTimeout(10000);
             
             byte[] receiveBuffer = new byte[1024];
             DatagramPacket receivePacket = new DatagramPacket(receiveBuffer, receiveBuffer.length);
