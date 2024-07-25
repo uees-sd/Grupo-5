@@ -6,7 +6,7 @@ package rastreoClientes;
 import admincenterprofesor.Serializer;
 import java.net.*;
 import java.util.ArrayList;
-import models.Usuario;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
@@ -18,6 +18,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import juegoPreguntasModels.Usuario;
 /**
  *
  * @author aleja
@@ -53,13 +54,6 @@ public class UDPBroadcastServer {
             Logger.getLogger(UDPBroadcastServer.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-            
-
-        
-        
-        
-        
-        
         ArrayList<Usuario> usuarios = new ArrayList<>(); //jugadores usuarios conectados
         
          // ip de jugadores conectados

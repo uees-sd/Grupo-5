@@ -1,0 +1,11 @@
+{
+    "java.project.referencedLibraries": [
+        "e:\\Sistemas distribuidos\\Juego de preguntas\\juegoPreguntasModels\\lib\\build\\libs\\lib.jar"
+    ],
+    "java.project.sourcePaths": [
+        "JuegoSinNombre\\src",
+        "JuegoSinNombre\\src\\Estudiante\\Modelo",
+        "JuegoSinNombre\\src\\Maestro\\Modelo",
+        "JuegoSinNombre\\src\\prueba\\src"
+    ]
+}

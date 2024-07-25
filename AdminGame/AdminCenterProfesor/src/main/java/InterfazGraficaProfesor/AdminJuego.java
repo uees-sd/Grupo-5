@@ -13,8 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import models.Batalla;
-import models.Usuario;
+import juegoPreguntasModels.*;
 
 /**
  *

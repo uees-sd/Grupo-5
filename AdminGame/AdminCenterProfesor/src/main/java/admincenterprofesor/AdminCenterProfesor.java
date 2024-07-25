@@ -11,12 +11,10 @@ import java.net.InetAddress;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Optional;
-import models.Batalla;
-import models.Pregunta;
-import models.Respuesta;
-import models.Usuario;
-import rastreoClientes.Deteccion;
+import juegoPreguntasModels.*;
 import rastreoClientes.UDPBroadcastServer;
+
+
 
 /**
  *
