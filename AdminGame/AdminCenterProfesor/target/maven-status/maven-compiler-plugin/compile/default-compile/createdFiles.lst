@@ -1,14 +1,15 @@
+admincenterprofesor\UDPBroadcastServer.class
 admincenterprofesor\AdminCenterProfesor.class
+admincenterprofesor\Deteccion.class
 InterfazGraficaProfesor\AdminJuego$3.class
 InterfazGraficaProfesor\AdminJuego$8.class
 admincenterprofesor\Serializer.class
 InterfazGraficaProfesor\AdminJuego$2.class
 InterfazGraficaProfesor\AdminJuego.class
 InterfazGraficaProfesor\AdminJuego$7.class
-rastreoClientes\Deteccion.class
 InterfazGraficaProfesor\AdminJuego$6.class
 InterfazGraficaProfesor\AdminJuego$1.class
 InterfazGraficaProfesor\AdminJuego$5.class
 InterfazGraficaProfesor\AdminJuego$4.class
-rastreoClientes\UDPBroadcastServer.class
+admincenterprofesor\UDPBroadcastServer$PingTask.class
 InterfazGraficaProfesor\AdminJuego$9.class
