@@ -495,7 +495,7 @@ public class AdminJuego extends javax.swing.JFrame {
     
     
     private void btnIniciarBatallasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarBatallasActionPerformed
-        // TODO add your handling code here:
+        admProfesor.enviarBatallas();
     }//GEN-LAST:event_btnIniciarBatallasActionPerformed
 
     private void btnSiguienteRondaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteRondaActionPerformed

@@ -91,6 +91,7 @@ public class AdminCenterProfesor {
         batalla.setVidaJugador2(100);
         batalla.setDuracion(10);
         batallas.add(batalla);
+        batalla.setPreguntas(preguntas);
         batallastr = batallas.size() + ".- " + batalla.getJugador1().getUserName() + " vs " + batalla.getJugador2().getUserName();
         return batallastr;
     }
@@ -106,12 +107,12 @@ public class AdminCenterProfesor {
                 broadcastAddress = InetAddress.getByName(batalla.getJugador1().getIp());
                 packet = new DatagramPacket(buffer, buffer.length, broadcastAddress, port);
                 socket.send(packet);
-                System.out.println("Señal de broadcast enviada");
+                System.out.println("Señal de broadcast al usuario " + batalla.getJugador1().getUserName() + " con ip: " + batalla.getJugador1().getIp());
                 // Jugador 2
                 broadcastAddress = InetAddress.getByName(batalla.getJugador2().getIp());
                 packet = new DatagramPacket(buffer, buffer.length, broadcastAddress, port);
                 socket.send(packet);
-                System.out.println("Señal de broadcast enviada");
+                System.out.println("Señal de broadcast al usuario " + batalla.getJugador2().getUserName() + " con ip: " + batalla.getJugador2().getIp());
             }
         } catch (IOException e) {
             e.printStackTrace();

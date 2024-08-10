@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author aleja
+ * @author aleja    
  */
 public class Usuario implements Serializable{
     private String userName;
