@@ -63,7 +63,7 @@ public class UDPBroadcastClient {
                     System.out.println("Esperando batalla de servidor...");
                     serverSocket.receive(receivePacket);
                     Batalla batalla = (Batalla)Serializer.deserializeObject(receivePacket.getData());
-                    //System.out.println("Señal de broadcast recibida desde: " + packet.getAddress().getHostAddress() + " con mensaje: " + message);
+                    System.out.println(batalla.getPreguntas());
                     //System.out.println(batalla.);
                     /*Registro registro = Registro.getInstance();
                     registro.removeAll();*/
