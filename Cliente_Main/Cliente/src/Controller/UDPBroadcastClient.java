@@ -78,35 +78,5 @@ public class UDPBroadcastClient {
         }
     }
     
-   private String Ip() throws SocketException{
-    try {
-            // Obtenemos todas las interfaces de red de la computadora
-            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
-            while (interfaces.hasMoreElements()) {
-                NetworkInterface networkInterface = interfaces.nextElement();
-                
-                // Filtramos las interfaces inactivas o loopback
-                if (networkInterface.isLoopback() || !networkInterface.isUp()) {
-                    continue;
-                }
-
-                // Obtenemos las direcciones IP de la interfaz
-                Enumeration<InetAddress> addresses = networkInterface.getInetAddresses();
-                while (addresses.hasMoreElements()) {
-                    InetAddress address = addresses.nextElement();
-                    
-                    // Filtramos solo las direcciones IPv4 (omitimos IPv6)
-                    if (address instanceof java.net.Inet4Address) {
-                        //System.out.println("IP principal: " + address.getHostAddress());
-                        return address.getHostAddress();
-                    }
-                }
-            }
-        } catch (SocketException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
-    
 }
 
