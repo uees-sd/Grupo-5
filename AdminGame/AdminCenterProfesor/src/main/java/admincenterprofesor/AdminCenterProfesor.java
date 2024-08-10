@@ -28,6 +28,7 @@ public class AdminCenterProfesor {
     private ArrayList<String> preguntasCrudas = new ArrayList<String>();
     private ArrayList<Batalla> batallas = new ArrayList<Batalla>();
     private Usuario[] jugadores = new Usuario[2];
+    private int ConteoRespuestasTrueEnviarBatallas = 0;
     
     
     
@@ -114,6 +115,9 @@ public class AdminCenterProfesor {
                 socket.send(packet);
                 System.out.println("Señal de broadcast al usuario " + batalla.getJugador2().getUserName() + " con ip: " + batalla.getJugador2().getIp());
             }
+            
+            socket.close();
+            recibirRespuestaEnviarBatallas();
         } catch (IOException e) {
             e.printStackTrace();
             return false;
@@ -123,6 +127,29 @@ public class AdminCenterProfesor {
     
     public ArrayList<Batalla> obtenerBatallasActualizadas(){
         return this.batallas;
+    }
+    
+    public boolean recibirRespuestaEnviarBatallas()
+    {
+        try (DatagramSocket serverSocket = new DatagramSocket(port2)){
+            serverSocket.setSoTimeout(5000);
+            byte[] receiveBuffer = new byte[1024];
+            DatagramPacket receivePacket = new DatagramPacket(receiveBuffer, receiveBuffer.length);
+            System.out.println("Esperando respuesta EnviarBatallas clientes...");
+
+            while (true) {  
+                try
+                {
+                    serverSocket.receive(receivePacket);
+                    BaseReponse baseReponse = (BaseReponse) Serializer.deserializeObject(receivePacket.getData());
+                } catch (SocketTimeoutException e) {
+                    break;
+                }
+            }
+        }catch (Exception ex) {
+            
+        }
+        return false;
     }
     
     public void RecibirBatallas() throws ClassNotFoundException{

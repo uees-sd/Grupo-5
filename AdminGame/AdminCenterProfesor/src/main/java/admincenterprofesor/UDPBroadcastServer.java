@@ -63,10 +63,6 @@ public class UDPBroadcastServer {
         String message = "Hola desde el servidor!";
         // Enviar señal de broadcast
         try (DatagramSocket socket = new DatagramSocket()) {
-            //List<String> connectedIPs = new ArrayList<>();
-            //Deteccion detect = new Deteccion();
-            //connectedIPs =  detect.IPs();
-            //String prefix = detect.prefix();
             
             for (String ip : connectedIPs) {
                 //String host = prefix + i;
@@ -95,19 +91,7 @@ public class UDPBroadcastServer {
             DatagramPacket packet2 = new DatagramPacket(buffer2, buffer.length, broadcastAddress, port);
             socket.send(packet2);
             System.out.println("Señal de broadcast enviada");
-            
-//            String prefix = "192.168.100.";
-//            for (int i = 0; i < 255; i++) {
-//                String host = prefix + i;
-//                //String host = connectedIPs.get(i);
-//                socket.setBroadcast(true);
-//                byte[] buffer = message.getBytes();
-//                InetAddress broadcastAddress = InetAddress.getByName(host); // Dirección de broadcast
-//                //System.out.println(connectedIPs);
-//                DatagramPacket packet = new DatagramPacket(buffer, buffer.length, broadcastAddress, port);
-//                socket.send(packet);
-//                System.out.println("Señal de broadcast enviada");
-//            }
+           
         } catch (IOException e) {
             e.printStackTrace();
         }
