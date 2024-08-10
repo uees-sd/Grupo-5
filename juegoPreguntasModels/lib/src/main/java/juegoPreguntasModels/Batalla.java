@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package juegoPreguntasModels;
-
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,11 +19,12 @@ public class Batalla implements Serializable{
     private Usuario Ganador;
     private Usuario Perdedor;
     private double duracion;
+    private ArrayList<Pregunta> preguntas;
 
     public Batalla(){};
 
     public Batalla(int numBatalla, Usuario jugador1, Usuario jugador2, double vidaJugador1, double vidaJugador2, Usuario ganador,
-            Usuario perdedor, double duracion) {
+            Usuario perdedor, double duracion, ArrayList<Pregunta> preguntas) {
         this.numBatalla = numBatalla;
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
@@ -32,6 +33,15 @@ public class Batalla implements Serializable{
         Ganador = ganador;
         Perdedor = perdedor;
         this.duracion = duracion;
+        this.preguntas = preguntas;
+    }
+
+    public ArrayList<Pregunta> getPreguntas() {
+        return preguntas;
+    }
+
+    public void setPreguntas(ArrayList<Pregunta> preguntas) {
+        this.preguntas = preguntas;
     }
 
     public int getNumBatalla() {

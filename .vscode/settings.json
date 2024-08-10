@@ -7,5 +7,6 @@
         "JuegoSinNombre\\src\\Estudiante\\Modelo",
         "JuegoSinNombre\\src\\Maestro\\Modelo",
         "JuegoSinNombre\\src\\prueba\\src"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

@@ -79,6 +79,22 @@ public class UDPBroadcastServer {
                 socket.send(packet);
                 System.out.println("Señal de broadcast enviada");
             }
+
+            socket.setBroadcast(true);
+            byte[] buffer = message.getBytes();
+            InetAddress broadcastAddress = InetAddress.getByName("192.168.100.210"); // Dirección de broadcast
+            //System.out.println(connectedIPs);
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, broadcastAddress, port);
+            socket.send(packet);
+            System.out.println("Señal de broadcast enviada");
+            
+            socket.setBroadcast(true);
+            byte[] buffer2 = message.getBytes();
+            broadcastAddress = InetAddress.getByName("192.168.100.108"); // Dirección de broadcast
+            //System.out.println(connectedIPs);
+            DatagramPacket packet2 = new DatagramPacket(buffer2, buffer.length, broadcastAddress, port);
+            socket.send(packet2);
+            System.out.println("Señal de broadcast enviada");
             
 //            String prefix = "192.168.100.";
 //            for (int i = 0; i < 255; i++) {
