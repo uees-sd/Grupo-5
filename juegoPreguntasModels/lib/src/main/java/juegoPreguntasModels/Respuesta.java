@@ -3,12 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package juegoPreguntasModels;
+import java.io.Serializable;
 
 /**
  *
  * @author aleja
  */
-public class Respuesta {
+public class Respuesta implements Serializable{
     private String respuesta;
     private boolean esCorrecta;
 

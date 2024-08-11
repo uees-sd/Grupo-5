@@ -122,7 +122,7 @@ public class AdminCenterProfesor {
             }
             
             socket.close();
-            recibirRespuestaEnviarBatallas();
+            //recibirRespuestaEnviarBatallas();
         } catch (IOException e) {
             e.printStackTrace();
             return false;

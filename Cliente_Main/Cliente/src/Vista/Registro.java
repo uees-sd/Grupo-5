@@ -5,6 +5,8 @@ import java.awt.*;
 import Controller.UDPBroadcastClient;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -161,5 +163,22 @@ public class Registro extends JFrame {
     private void load() throws InterruptedException, ClassNotFoundException{
         UDPBroadcastClient cliente = new UDPBroadcastClient();
         cliente.inicio(username, personajeSeleccionado);
+    }
+    
+    public void battle(){
+        fondo.removeAll();
+        Map<String, String> Local = new HashMap<>();
+        Local.put("1", "src/Vista/Avatares/Avatar1/Idle/idle_L.gif");
+        Local.put("2", "src/Vista/Avatares/Avatar2/Idle/Idle_L.gif");
+        
+        Map<String, String> Visitante = new HashMap();
+        Visitante.put("1", "src/Vista/Avatares/Avatar1/Idle/idle_R.gif");
+        Visitante.put("2", "src/Vista/Avatares/Avatar2/Idle/Idle_R.gif");
+        
+        ImageIcon img = new ImageIcon("src/Vista/UI/Mapa.gif");
+        fondo.setIcon(img);
+        fondo.setLayout(null); // Establecer LayoutManager nulo para posición absoluta
+
+        add(fondo, BorderLayout.CENTER);
     }
 }

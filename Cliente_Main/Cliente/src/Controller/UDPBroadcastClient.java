@@ -65,6 +65,7 @@ public class UDPBroadcastClient {
                     serverSocket.receive(receivePacket);
                     Batalla batalla = (Batalla)Serializer.deserializeObject(receivePacket.getData());
                     System.out.println("Batalla recibida");
+                    System.out.println(batalla.getJugador1().getAvatar());
                     System.out.println(batalla.getJugador1().getUserName()+" vs "+batalla.getJugador2().getUserName());
                     break;                  
                     }catch(SocketTimeoutException e)
@@ -73,9 +74,15 @@ public class UDPBroadcastClient {
                     break;
                 }
             }
+            serverSocket.close();
+            iniciarBatalla();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void iniciarBatalla(){
+        Registro vista = Registro.getInstance();
+        vista.battle();
     }
     
 }
