@@ -207,5 +207,65 @@ public class Registro extends JFrame {
 
         select.add(opc);
         fondo.add(select);
+        UI();
+    }
+    
+    private void UI(){
+        // Crear el panel select con posición absoluta
+        JPanel select = new JPanel();
+        select.setOpaque(false); // Hacer el panel transparente para mostrar el fondo
+        select.setLayout(null); // Establecer LayoutManager nulo para posición absoluta
+        select.setBounds(0, 0, 1920, 1080); // Establecer la posición y tamaño del panel
+
+        JLabel opc = new JLabel();
+        ImageIcon im0 = new ImageIcon("src/Vista/UI/ui_vid");
+        opc.setIcon(im0);
+        opc.setBounds(0, 0, 1920, 1080); // Establecer la posición y tamaño de la etiqueta
+        
+        select.add(opc);
+        fondo.add(select);
+        
+        Map<Integer, String> Local = new HashMap<>();
+        Local.put(1, "src/Vista/UI/Vida/L/1.png");
+        Local.put(2, "src/Vista/UI/Vida/L/2.png");
+        Local.put(3, "src/Vista/UI/Vida/L/3.png");
+        Local.put(4, "src/Vista/UI/Vida/L/4.png");
+        Local.put(5, "src/Vista/UI/Vida/L/5.png");
+        Local.put(6, "src/Vista/UI/Vida/L/6.png");
+        
+        Map<Integer, String> Visitante = new HashMap();
+        Visitante.put(1, "src/Vista/UI/Vida/R/1.png");
+        Visitante.put(2, "src/Vista/UI/Vida/R/2.png");
+        Visitante.put(3, "src/Vista/UI/Vida/R/3.png");
+        Visitante.put(4, "src/Vista/UI/Vida/R/4.png");
+        Visitante.put(5, "src/Vista/UI/Vida/R/5.png");
+        Visitante.put(6, "src/Vista/UI/Vida/R/6.png");
+        
+        
+        JPanel vida = new JPanel();
+        vida.setOpaque(false); // Hacer el panel transparente para mostrar el fondo
+        vida.setLayout(null); // Establecer LayoutManager nulo para posición absoluta
+        vida.setBounds(0, 0, 1920, 1080); // Establecer la posición y tamaño del panel
+
+        JLabel heart = new JLabel();
+        ImageIcon local = new ImageIcon(Local.get(1));
+        heart.setIcon(local);
+        heart.setBounds(0, 0, 1920, 1080);
+        
+        vida.add(heart);
+        fondo.add(vida);
+        
+        JPanel vida0 = new JPanel();
+        vida0.setOpaque(false); // Hacer el panel transparente para mostrar el fondo
+        vida0.setLayout(null); // Establecer LayoutManager nulo para posición absoluta
+        vida0.setBounds(0, 0, 1920, 1080); // Establecer la posición y tamaño del panel
+
+        JLabel heart0 = new JLabel();
+        ImageIcon Visit = new ImageIcon(Visitante.get(1));
+        heart0.setIcon(Visit);
+        heart0.setBounds(0, 0, 1920, 1080);
+        
+        vida.add(heart0);
+        fondo.add(vida);
     }
 }
