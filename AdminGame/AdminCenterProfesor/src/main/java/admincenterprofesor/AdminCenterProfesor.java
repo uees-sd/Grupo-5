@@ -28,6 +28,7 @@ public class AdminCenterProfesor {
     private ArrayList<String> preguntasCrudas = new ArrayList<String>();
     private ArrayList<Batalla> batallas = new ArrayList<Batalla>();
     private Usuario[] jugadores = new Usuario[2];
+    private int ConteoEnviosEnviarBatallas = 0;
     private int ConteoRespuestasTrueEnviarBatallas = 0;
     
     
@@ -114,6 +115,8 @@ public class AdminCenterProfesor {
                 packet = new DatagramPacket(buffer, buffer.length, broadcastAddress, port);
                 socket.send(packet);
                 System.out.println("Señal de broadcast al usuario " + batalla.getJugador2().getUserName() + " con ip: " + batalla.getJugador2().getIp());
+                
+                ConteoEnviosEnviarBatallas = 2;
             }
             
             socket.close();
@@ -141,10 +144,16 @@ public class AdminCenterProfesor {
                 try
                 {
                     serverSocket.receive(receivePacket);
-                    BaseReponse baseReponse = (BaseReponse) Serializer.deserializeObject(receivePacket.getData());            
+                    Response responseEnviarBatalla = (Response) Serializer.deserializeObject(receivePacket.getData());    
+                    if(responseEnviarBatalla.isSuccess()){
+                        ConteoRespuestasTrueEnviarBatallas++;
+                    }
                 } catch (SocketTimeoutException e) {
                     break;
                 }
+            }
+            if(ConteoEnviosEnviarBatallas == ConteoRespuestasTrueEnviarBatallas){
+                return true;
             }
         }catch (Exception ex) {
             
