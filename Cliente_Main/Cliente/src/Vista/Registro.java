@@ -165,7 +165,7 @@ public class Registro extends JFrame {
         cliente.inicio(username, personajeSeleccionado);
     }
     
-    public void battle(){
+    public void battle(String key){
         fondo.removeAll();
         Map<String, String> Local = new HashMap<>();
         Local.put("1", "src/Vista/Avatares/Avatar1/Idle/idle_L.gif");
@@ -180,5 +180,32 @@ public class Registro extends JFrame {
         fondo.setLayout(null); // Establecer LayoutManager nulo para posición absoluta
 
         add(fondo, BorderLayout.CENTER);
+        
+        JPanel select0 = new JPanel();
+        select0.setOpaque(false); // Hacer el panel transparente para mostrar el fondo
+        select0.setLayout(null); // Establecer LayoutManager nulo para posición absoluta
+        select0.setBounds(0, 0, 1920, 1080);
+
+        JLabel opc1 = new JLabel();
+        ImageIcon im1 = new ImageIcon(Local.get(personajeSeleccionado));
+        opc1.setIcon(im1);
+        opc1.setBounds(0, 0, 1920, 1080);
+
+        select0.add(opc1);
+        fondo.add(select0);
+        
+        // Crear el panel select con posición absoluta
+        JPanel select = new JPanel();
+        select.setOpaque(false); // Hacer el panel transparente para mostrar el fondo
+        select.setLayout(null); // Establecer LayoutManager nulo para posición absoluta
+        select.setBounds(0, 0, 1920, 1080); // Establecer la posición y tamaño del panel
+
+        JLabel opc = new JLabel();
+        ImageIcon im0 = new ImageIcon(Visitante.get(key));
+        opc.setIcon(im0);
+        opc.setBounds(0, 0, 1920, 1080); // Establecer la posición y tamaño de la etiqueta
+
+        select.add(opc);
+        fondo.add(select);
     }
 }

@@ -67,6 +67,13 @@ public class UDPBroadcastClient {
                     System.out.println("Batalla recibida");
                     System.out.println(batalla.getJugador1().getAvatar());
                     System.out.println(batalla.getJugador1().getUserName()+" vs "+batalla.getJugador2().getUserName());
+                    
+                    if(getIP().equals(batalla.getJugador1().getIp())){
+                        iniciarBatalla(batalla.getJugador2().getAvatar());
+                    }else{
+                        iniciarBatalla(batalla.getJugador1().getAvatar());
+                    }
+                    
                     break;                  
                     }catch(SocketTimeoutException e)
                 {
@@ -75,15 +82,41 @@ public class UDPBroadcastClient {
                 }
             }
             serverSocket.close();
-            iniciarBatalla();
+            //iniciarBatalla(batalla.getJugador1().getUserName());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void iniciarBatalla(){
+    private void iniciarBatalla(String key){
         Registro vista = Registro.getInstance();
-        vista.battle();
+        vista.battle(key);
     }
     
+    private static String getIP() {
+        try {
+            Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
+            while (networkInterfaces.hasMoreElements()) {
+                NetworkInterface networkInterface = networkInterfaces.nextElement();
+
+                // Ignorar interfaces que no están activas o son loopback
+                if (!networkInterface.isUp() || networkInterface.isLoopback()) {
+                    continue;
+                }
+
+                Enumeration<InetAddress> inetAddresses = networkInterface.getInetAddresses();
+                while (inetAddresses.hasMoreElements()) {
+                    InetAddress inetAddress = inetAddresses.nextElement();
+
+                    // Verificar que la dirección no es de loopback y es IPv4
+                    if (!inetAddress.isLoopbackAddress() && inetAddress instanceof java.net.Inet4Address) {
+                        return inetAddress.getHostAddress();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "No IP Address found";
+    }
 }
 
