@@ -16,6 +16,9 @@ public class Respuesta {
         this.respuesta = respuesta;
         this.esCorrecta = esCorrecta;
     }
+
+    public Respuesta() {
+    }
     
     public String getRespuesta() {
         return respuesta;

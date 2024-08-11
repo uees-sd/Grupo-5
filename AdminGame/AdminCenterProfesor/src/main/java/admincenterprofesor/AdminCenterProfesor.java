@@ -12,6 +12,7 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Optional;
 import juegoPreguntasModels.*;
+import juegoPreguntasModels.Respuesta;
 
 
 
@@ -51,6 +52,7 @@ public class AdminCenterProfesor {
             String[] propiedadesRespuestas = propiedades[2].split(",");
             ArrayList<Respuesta> respuestas = new ArrayList<>();
             for(String resp : propiedadesRespuestas){
+                //Respuesta respuesta = new Respuesta();
                 Respuesta respuesta = new Respuesta();
                 String esCorrecta = "(SI)";
                 if(resp.contains(esCorrecta)){
