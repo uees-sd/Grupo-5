@@ -141,7 +141,7 @@ public class AdminCenterProfesor {
                 try
                 {
                     serverSocket.receive(receivePacket);
-                    BaseReponse baseReponse = (BaseReponse) Serializer.deserializeObject(receivePacket.getData());
+                    BaseReponse baseReponse = (BaseReponse) Serializer.deserializeObject(receivePacket.getData());            
                 } catch (SocketTimeoutException e) {
                     break;
                 }

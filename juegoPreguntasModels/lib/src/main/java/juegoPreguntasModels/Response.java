@@ -8,8 +8,8 @@ package juegoPreguntasModels;
  *
  * @author aleja
  */
-public class ResponseEnviarBatalla extends BaseResponse{
-    public ResponseEnviarBatalla(String message, boolean success) {
+public class Response extends BaseResponse{
+    public Response(String message, boolean success) {
         super(message, success);
     }
     
